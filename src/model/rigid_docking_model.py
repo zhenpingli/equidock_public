@@ -282,7 +282,7 @@ class IEGMN_Layer(nn.Module):
             hetero_graph.update_all(fn.copy_edge('msg', 'm'), fn.mean('m', 'aggr_msg'),
                                     etype=('receptor', 'rr', 'receptor'))
 
-
+            # 公式9
             x_final_ligand = self.x_connection_init * orig_coors_ligand + \
                              (1. - self.x_connection_init) * hetero_graph.nodes['ligand'].data['x_now'] + \
                              hetero_graph.nodes['ligand'].data['x_update']
