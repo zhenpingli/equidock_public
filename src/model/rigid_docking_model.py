@@ -234,7 +234,7 @@ class IEGMN_Layer(nn.Module):
                                                     x_rel_mag_receptor), dim=-1)
 
             hetero_graph.edges['ll'].data['msg'] = self.edge_mlp(cat_input_for_msg_ligand)  # m_{i->j}
-            hetero_graph.edges['rr'].data['msg'] = self.edge_mlp(cat_input_for_msg_receptor)
+            hetero_graph.edges['rr'].data['msg'] = self.edge_mlp(cat_input_for_msg_receptor) # 公式5的综合
 
             if self.debug:
                 self.log(torch.max(hetero_graph.edges['ll'].data['msg']), 'data[msg] = m_{i->j} = phi^e(h_i, h_j, f_{i,j}, x_rel_mag_ligand)')
