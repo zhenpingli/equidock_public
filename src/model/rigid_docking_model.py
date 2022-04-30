@@ -328,7 +328,7 @@ class IEGMN_Layer(nn.Module):
                                                  original_receptor_node_features),
                                                 dim=-1)
 
-            # Skip connections
+            # Skip connections 公式10
             if self.h_feats_dim == self.out_feats_dim:
                 node_upd_ligand = self.skip_weight_h * self.node_mlp(input_node_upd_ligand) + (1. - self.skip_weight_h) * h_feats_ligand
                 node_upd_receptor = self.skip_weight_h * self.node_mlp(input_node_upd_receptor) + (1. - self.skip_weight_h) * h_feats_receptor
