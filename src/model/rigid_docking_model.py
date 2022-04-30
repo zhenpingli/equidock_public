@@ -243,7 +243,7 @@ class IEGMN_Layer(nn.Module):
 
             mask = get_mask(hetero_graph.batch_num_nodes('ligand'), hetero_graph.batch_num_nodes('receptor'), self.device)
 
-            # \mu_i
+            # \mu_i a_{j->i}=compute_cross_attention
             hetero_graph.nodes['ligand'].data['aggr_cross_msg'] = compute_cross_attention(self.att_mlp_Q(h_feats_ligand),
                                                                                           self.att_mlp_K(h_feats_receptor),
                                                                                           self.att_mlp_V(h_feats_receptor),
